@@ -7,10 +7,8 @@ import {
     ScanStatus,
     Message as ChatyMessage,
 } from 'wechaty';
-import {
-    generate as generateQRCode,
-    setErrorLevel as setQRCodeErrorLevel
-} from 'qrcode-terminal'
+import pkg from 'qrcode-terminal';
+const { generate: generateQRCode, setErrorLevel: setQRCodeErrorLevel } = pkg;
 import {
     Participant,
     Thread,
@@ -19,7 +17,7 @@ import {
     Bot,
     BotEventType,
     EventCallback
-} from './bot'
+} from './bot.js'
 
 export interface WechatBotConfig {
     botName: string

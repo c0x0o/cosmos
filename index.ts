@@ -1,7 +1,7 @@
 import { ChatGPTAPI } from 'chatgpt';
-import { ConfigBuilder } from './config';
-import { BotEventType, Message } from './IMBot/bot'
-import { WechatBot } from './IMBot/wechat'
+import { ConfigBuilder } from './config.js';
+import { BotEventType, Message } from './imbot/bot.js'
+import { WechatBot } from './imbot/wechat.js'
 
 interface ChatGptTracker {
     conversationId: string | undefined,
@@ -30,6 +30,8 @@ async function main() {
             conversationId: res.conversationId,
             parentMessageId: res.id,
         })
+
+	thread.send(res.text)
     })
 
     bot.run()
