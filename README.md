@@ -3,6 +3,7 @@
 First, create a config file at where you start:
 
 ```json
+{
     "chatgpt_key": "",
     "channel_whitelist": ["group name"],
     "dm_whitelist": ["your user name(not wechat id or alias)"]
