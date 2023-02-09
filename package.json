@@ -1,0 +1,37 @@
+{
+  "name": "cosmos",
+  "version": "0.0.1",
+  "description": "Your personal robot secretary",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsc && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c0x0o/cosmos.git"
+  },
+  "keywords": [
+    "chatgpt",
+    "wechat-robot",
+    "automation"
+  ],
+  "author": "Li Zongyuan",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/c0x0o/cosmos/issues"
+  },
+  "homepage": "https://github.com/c0x0o/cosmos#readme",
+  "dependencies": {
+    "@types/qrcode-terminal": "^0.12.0",
+    "chatgpt": "^4.1.2",
+    "qrcode-terminal": "^0.12.0",
+    "wechaty": "^1.20.2",
+    "wechaty-puppet-wechat4u": "^1.13.14"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.2",
+    "typescript": "^4.9.5",
+    "typescript-language-server": "^3.1.0"
+  }
+}
