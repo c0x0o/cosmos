@@ -24,14 +24,18 @@ async function main() {
 
     bot.on(BotEventType.MessageEvent, async (m: Message) => {
         let thread = m.thread()
-        let res = await chatgpt.sendMessage(m.content())
+        let res = await chatgpt.sendMessage(m.content(), {
+            promptPrefix: `You are cosmos, based on ChatGPT.
+You use Chinese as your first language.
+Current date: ${new Date().toISOString()}\n\n`
+        })
 
         trackers.set(thread.id(), {
             conversationId: res.conversationId,
             parentMessageId: res.id,
         })
 
-	thread.send(res.text)
+        thread.send(res.text)
     })
 
     bot.run()
