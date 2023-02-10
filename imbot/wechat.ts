@@ -87,6 +87,9 @@ class WechatThread implements Thread {
             }
         }
 
+        // remove leading cosmos
+        content = content.replace(RegExp('^cosmos[,\s，]'), "")
+
         await this.chan.send(`${mentions}${content}`)
 
         this.updateLastActive()
@@ -327,13 +330,14 @@ export class WechatBot implements Bot {
             }).map((v: Contact) => {
                 return new WechatParticipant(v)
             })
+            let participants = mentions
 
             // add talker when use @ to wakeup cosmos
             if (await msg.mentionSelf()) {
-                mentions.push(new WechatParticipant(msg.talker()))
+                participants.push(new WechatParticipant(msg.talker()))
             }
 
-            let message = new WechatMessage(this.rooms.get(room.id)!.findOrAddThread(mentions), new WechatParticipant(msg.talker()), mentions, msg.text())
+            let message = new WechatMessage(this.rooms.get(room.id)!.findOrAddThread(participants), new WechatParticipant(msg.talker()), mentions, msg.text())
 
             for (let cb of this.callbacks.get(BotEventType.MessageEvent)!) {
                 cb(message)
